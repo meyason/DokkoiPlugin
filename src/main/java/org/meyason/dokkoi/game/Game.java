@@ -2,6 +2,9 @@ package org.meyason.dokkoi.game;
 
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
+import org.bukkit.Effect;
+import org.bukkit.Particle;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitTask;
 import org.bukkit.scoreboard.Objective;
@@ -164,6 +167,10 @@ public class Game {
                 }
             }
             Bukkit.getServer().broadcast(Component.text("§a目標を達成したプレイヤー\n §e" + clearPlayerNames));
+        }
+        for(Player player : clearPlayers){
+            player.getWorld().spawnParticle(Particle.FIREWORK, player.getLocation().add(0,1,0), 100, 1,1,1, 0.1);
+            player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0F, 1.0F);
         }
         clearScoreboardDisplay();
     }
