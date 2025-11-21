@@ -35,7 +35,7 @@ public class GoalFixCommand implements CommandExecutor {
             return false;
         }
         String goalName = args[1];
-        if(GoalList.getAllGoals().contains(goalName)){
+        if(GoalList.getAllGoalNames().contains(goalName)){
             Game.getInstance().setGoalFixedPlayer(targetPlayer, goalName);
             sender.sendMessage(Component.text("§aプレイヤー " + playerName + " の目標を " + goalName + " に設定しました。"));
             return true;

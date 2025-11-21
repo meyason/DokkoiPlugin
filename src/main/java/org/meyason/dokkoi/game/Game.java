@@ -2,6 +2,7 @@ package org.meyason.dokkoi.game;
 
 import net.kyori.adventure.text.Component;
 import org.bukkit.Bukkit;
+import org.bukkit.GameMode;
 import org.bukkit.Particle;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
@@ -72,6 +73,7 @@ public class Game {
         alivePlayers = new ArrayList<>();
         joinedPlayers = new ArrayList<>();
         killerList = new HashMap<>();
+        goalFixedPlayers = new HashMap<>();
         setNowTime(matchingPhaseTime);
     }
 
@@ -191,6 +193,7 @@ public class Game {
             player.setHealth(20.0);
             player.setFoodLevel(20);
             player.setCustomNameVisible(true);
+            player.setGameMode(GameMode.CREATIVE);
         }
         new Game();
     }

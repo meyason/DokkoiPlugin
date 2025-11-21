@@ -25,6 +25,7 @@ public abstract class CustomItem {
         this.id = id;
         this.name = name;
         this.baseItem = baseItem;
+        registerItemFunction();
     }
 
     public String getId() {return this.id;}
@@ -38,12 +39,24 @@ public abstract class CustomItem {
         ItemMeta meta = item.getItemMeta();
         if(meta != null){
             PersistentDataContainer container = meta.getPersistentDataContainer();
-            container.set(new NamespacedKey(Dokkoi.getInstance(), GameItemKeyString.ITEM_NAME), PersistentDataType.STRING, this.name);
+            container.set(new NamespacedKey(Dokkoi.getInstance(), GameItemKeyString.ITEM_NAME), PersistentDataType.STRING, this.id);
             meta.displayName(Component.text(this.name));
             item.setItemMeta(meta);
             return default_setting.apply(item);
         }
         return item;
+    }
+
+    public static CustomItem getItem(ItemStack item){
+        ItemMeta meta = item.getItemMeta();
+        PersistentDataContainer container = meta.getPersistentDataContainer();
+        NamespacedKey itemKey = new NamespacedKey(Dokkoi.getInstance(), GameItemKeyString.ITEM_NAME);
+
+        if(!container.has(itemKey, PersistentDataType.STRING)){
+            return null;
+        }
+        String itemID = container.get(itemKey, PersistentDataType.STRING);
+        return GameItem.getItem(itemID);
     }
 
     protected abstract void registerItemFunction();

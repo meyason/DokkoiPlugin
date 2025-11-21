@@ -10,7 +10,7 @@ import java.util.List;
 public class LastMan extends Goal {
 
     public LastMan() {
-        super("Last Man", "最後の一人になるまで生き残れ！");
+        super("LastMan", "最後の一人になるまで生き残れ！");
     }
 
     @Override

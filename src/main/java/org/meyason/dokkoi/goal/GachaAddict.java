@@ -75,7 +75,7 @@ public class GachaAddict extends Goal {
     }};
 
     public GachaAddict() {
-        super("Gacha Addict", "お前はガチャ中毒だ．SSRを引きあてて生き残れ！ガチャマシンにはアイテムが必要だ．殺してでもアイテムを集めろ！");
+        super("GachaAddict", "お前はガチャ中毒だ．SSRを引きあてて生き残れ！ガチャマシンにはアイテムが必要だ．殺してでもアイテムを集めろ！");
     }
 
     @Override
@@ -93,7 +93,7 @@ public class GachaAddict extends Goal {
         }
         CustomItem item = GameItem.getItem(GachaMachine.id);
         if(item == null){
-            this.player.sendMessage("§bエラーが発生しました．管理者に連絡してください：ガチャマシン取得失敗");
+            this.player.sendMessage("§6エラーが発生しました．管理者に連絡してください：ガチャマシン取得失敗");
             return;
         }
         ItemStack gachaMachine = item.getItem();

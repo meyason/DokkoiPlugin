@@ -13,5 +13,6 @@ public class EventManager {
         core.getServer().getPluginManager().registerEvents(new AttackEvent(), core);
         core.getServer().getPluginManager().registerEvents(new SneakEvent(), core);
         core.getServer().getPluginManager().registerEvents(new JumpEvent(), core);
+        core.getServer().getPluginManager().registerEvents(new InteractEvent(), core);
     }
 }

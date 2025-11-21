@@ -11,6 +11,7 @@ import org.meyason.dokkoi.Dokkoi;
 import org.meyason.dokkoi.constants.GameItemKeyString;
 import org.meyason.dokkoi.item.gacha.GachaMachine;
 
+import java.io.Console;
 import java.util.HashMap;
 
 public class GameItem {
@@ -18,6 +19,10 @@ public class GameItem {
     private static HashMap<String, CustomItem> items = new HashMap<>();
 
     public GameItem(){
+        registerItem();
+    }
+
+    public void registerItem(){
         items.put(GachaMachine.id, new GachaMachine());
     }
 
@@ -25,7 +30,6 @@ public class GameItem {
         if(!items.containsKey(id)){
             return null;
         }
-
         return items.get(id);
     }
 
@@ -61,7 +65,7 @@ public class GameItem {
         NamespacedKey itemKey = new NamespacedKey(Dokkoi.getInstance(), GameItemKeyString.ITEM_NAME);
         if(meta != null){
             PersistentDataContainer container = meta.getPersistentDataContainer();
-            return container.has(itemKey, PersistentDataType.BOOLEAN);
+            return container.has(itemKey, PersistentDataType.STRING);
         }
         return false;
     }
